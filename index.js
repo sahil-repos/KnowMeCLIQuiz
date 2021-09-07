@@ -1,5 +1,4 @@
-//ex13: put a list of questions together
-
+//A quiz about me
 
 var que1 = {
   que: "Who is my favorite superhero? ",
@@ -26,6 +25,7 @@ var que6={
   ans:"Sehwag"
 }
 
+//Array of questions
 var queList=[que1,que2,que3,que4,que5,que6];
 
 
@@ -33,17 +33,13 @@ var queList=[que1,que2,que3,que4,que5,que6];
 var rls = require("readline-sync");
 var chalk=require('chalk');
 var log=console.log;
-
 var score = 0;
 var highScore=0;
-
 var userScores = [
   {
     name: "Sahil",
     score: 6,
-  }
-
-  
+  }  
 ]
 
 function getScore() {
@@ -81,8 +77,7 @@ function testQuestion(question, answer)
   if (inp.toUpperCase() === answer.toUpperCase())
    { 
    log(chalk.green.bold("Correct!"));
-    score = score + 1;
-    
+    score = score + 1;  
   } 
   else 
   {
@@ -95,6 +90,9 @@ function anotherGame(){
   var choice=rls.question("Want to try again ?[y/n] ");
   if(choice==="y"){
     getScore();
+  }
+  else{
+    log(chalk.blue("\n Thanks for playing! Hope I see you again.\n"));
   }
 }
 
