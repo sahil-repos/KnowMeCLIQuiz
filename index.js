@@ -58,9 +58,12 @@ function getScore() {
   element[ "name" ] = userName;
   element["score"]=score;
   userScores.push(element);
+  log(chalk.yellow.bold("*******************************************"));
   log(chalk.black.bgWhite.bold("Final score: ",score));
+  log(chalk.yellow.bold("*******************************************"));
   if(score>highScore){
-    log(chalk.red.bold("NEW HIGH SCORE, You know a lot about me!!!"));
+    var msg=score>3?" You know a lot about me!!!":"";
+    log(chalk.red.bold("NEW HIGH SCORE",msg));
     highScore=score;
   }
   else{
@@ -77,19 +80,18 @@ function testQuestion(question, answer)
 
   if (inp.toUpperCase() === answer.toUpperCase())
    { 
-    console.log("Correct!");
+   log(chalk.green.bold("Correct!"));
     score = score + 1;
     
   } 
   else 
   {
-    console.log("Oops, slightly off the correct!");  
+    log(chalk.red.bold("Oops, slightly off the correct!"));  
   }
   console.log("\n current score: "+score+"\n");
 }
 
 function anotherGame(){
-  log(chalk.blue("Want to try again ?[y/n] "))
   var choice=rls.question("Want to try again ?[y/n] ");
   if(choice==="y"){
     getScore();
